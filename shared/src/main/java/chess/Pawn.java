@@ -53,7 +53,7 @@ public class Pawn {
         }
         for (int[] diagonalMove : diagonalMoves) {
             ChessPosition moveDiagonal = myPosition.addMove(diagonalMove);
-            if (board.availablePosition(moveDiagonal, color)) {
+            if (board.enemyPosition(moveDiagonal, color)) {
                 if (myPosition.getRow() == promotionTime){
                     for (ChessPiece.PieceType promotion : promotions){
                         possibleMoves.add(new ChessMove(myPosition, moveDiagonal, promotion));

@@ -17,19 +17,6 @@ public class ChessBoard {
         
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ChessBoard that = (ChessBoard) o;
-        return Objects.deepEquals(Board, that.Board);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.deepHashCode(Board);
-    }
 
     /**
      * Adds a chess piece to the chessboard
@@ -102,7 +89,7 @@ public class ChessBoard {
 
     public boolean emptySpace(ChessPosition position){
         int row = position.getRow() -1;
-        int col = position.getRow() -1;
+        int col = position.getColumn() -1;
         if (row > 7 | row < 0 | col > 7 | col < 0) {return false;}
         if (Board[row][col] == null) {return true;}
         return false;
@@ -110,7 +97,7 @@ public class ChessBoard {
 
     public boolean enemyPosition(ChessPosition position, ChessGame.TeamColor color){
         int row = position.getRow() -1;
-        int col = position.getRow() -1;
+        int col = position.getColumn() -1;
         if ((row > 7) | (row < 0) | (col > 7) | (col < 0)) {return false;}
         if (Board[row][col] == null) {return false;}
         if (Board[row][col].getTeamColor().equals(color)) {return false;}
@@ -119,10 +106,24 @@ public class ChessBoard {
 
     public boolean availablePosition(ChessPosition position, ChessGame.TeamColor color){
         int row = position.getRow() -1;
-        int col = position.getRow() -1;
+        int col = position.getColumn() -1;
         if ((row > 7) | (row < 0) | (col > 7) | (col < 0)) {return false;}
         if (Board[row][col] == null) {return true;}
         if (Board[row][col].getTeamColor().equals(color)) {return false;}
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChessBoard that = (ChessBoard) o;
+        return Objects.deepEquals(Board, that.Board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(Board);
     }
 }
