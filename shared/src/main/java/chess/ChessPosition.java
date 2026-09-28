@@ -35,9 +35,9 @@ public class ChessPosition {
     }
 
     public ChessPosition addMove(int[] move){
-        int nrow = row + move[0];
-        int ncol = col + move[1];
-        return new ChessPosition(nrow, ncol);
+        int newRow = row + move[0];
+        int newCol = col + move[1];
+        return new ChessPosition(newRow, newCol);
     }
 
     @Override

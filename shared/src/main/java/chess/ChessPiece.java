@@ -55,10 +55,10 @@ public class ChessPiece {
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         if (type.equals(PieceType.KING)) {return new King(board, myPosition, pieceColor).kingMoves();}
         if (type.equals(PieceType.QUEEN)) {return new Queen(board, myPosition, pieceColor).queenMoves();}
-        if (type.equals(PieceType.BISHOP)) {return new King(board, myPosition, pieceColor).kingMoves();}
-        if (type.equals(PieceType.KNIGHT)) {return new King(board, myPosition, pieceColor).kingMoves();}
-        if (type.equals(PieceType.ROOK)) {return new King(board, myPosition, pieceColor).kingMoves();}
-        if (type.equals(PieceType.PAWN)) {return new King(board, myPosition, pieceColor).kingMoves();}
+        if (type.equals(PieceType.BISHOP)) {return new Bishop(board, myPosition, pieceColor).bishopMoves();}
+        if (type.equals(PieceType.KNIGHT)) {return new Knight(board, myPosition, pieceColor).knightMoves();}
+        if (type.equals(PieceType.ROOK)) {return new Rook(board, myPosition, pieceColor).rookMoves();}
+        //if (type.equals(PieceType.PAWN)) {return new Pawn(board, myPosition, pieceColor).pawnMoves();}
         return null;
     }
 

@@ -111,7 +111,7 @@ public class ChessBoard {
     public boolean enemyPosition(ChessPosition position, ChessGame.TeamColor color){
         int row = position.getRow() -1;
         int col = position.getRow() -1;
-        if (row > 7 | row < 0 | col > 7 | col < 0) {return false;}
+        if ((row > 7) | (row < 0) | (col > 7) | (col < 0)) {return false;}
         if (Board[row][col] == null) {return false;}
         if (Board[row][col].getTeamColor().equals(color)) {return false;}
         return true;
@@ -120,7 +120,7 @@ public class ChessBoard {
     public boolean availablePosition(ChessPosition position, ChessGame.TeamColor color){
         int row = position.getRow() -1;
         int col = position.getRow() -1;
-        if (row > 7 | row < 0 | col > 7 | col < 0) {return false;}
+        if ((row > 7) | (row < 0) | (col > 7) | (col < 0)) {return false;}
         if (Board[row][col] == null) {return true;}
         if (Board[row][col].getTeamColor().equals(color)) {return false;}
         return true;
