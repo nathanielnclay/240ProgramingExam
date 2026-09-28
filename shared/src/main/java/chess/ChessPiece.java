@@ -58,7 +58,7 @@ public class ChessPiece {
         if (type.equals(PieceType.BISHOP)) {return new Bishop(board, myPosition, pieceColor).bishopMoves();}
         if (type.equals(PieceType.KNIGHT)) {return new Knight(board, myPosition, pieceColor).knightMoves();}
         if (type.equals(PieceType.ROOK)) {return new Rook(board, myPosition, pieceColor).rookMoves();}
-        //if (type.equals(PieceType.PAWN)) {return new Pawn(board, myPosition, pieceColor).pawnMoves();}
+        if (type.equals(PieceType.PAWN)) {return new Pawn(board, myPosition, pieceColor).pawnMoves();}
         return null;
     }
 
