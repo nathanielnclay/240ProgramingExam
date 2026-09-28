@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * A chessboard that can hold and rearrange chess pieces.
  * <p>
@@ -12,6 +15,20 @@ public class ChessBoard {
 
     public ChessBoard() {
         
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ChessBoard that = (ChessBoard) o;
+        return Objects.deepEquals(Board, that.Board);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(Board);
     }
 
     /**
@@ -63,7 +80,7 @@ public class ChessBoard {
                 new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN),
                 new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN)
         };
-        Board[6] = new ChessPiece[]{new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.PAWN),
+        Board[6] = new ChessPiece[]{new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN),
@@ -72,7 +89,7 @@ public class ChessBoard {
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.PAWN)
         };
-        Board[7] = new ChessPiece[]{new ChessPiece(ChessGame.TeamColor.WHITE, ChessPiece.PieceType.ROOK),
+        Board[7] = new ChessPiece[]{new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.KNIGHT),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.BISHOP),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.QUEEN),
@@ -81,5 +98,31 @@ public class ChessBoard {
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.KNIGHT),
                 new ChessPiece(ChessGame.TeamColor.BLACK, ChessPiece.PieceType.ROOK)
         };
+    }
+
+    public boolean emptySpace(ChessPosition position){
+        int row = position.getRow() -1;
+        int col = position.getRow() -1;
+        if (row > 7 | row < 0 | col > 7 | col < 0) {return false;}
+        if (Board[row][col] == null) {return true;}
+        return false;
+    }
+
+    public boolean enemyPosition(ChessPosition position, ChessGame.TeamColor color){
+        int row = position.getRow() -1;
+        int col = position.getRow() -1;
+        if (row > 7 | row < 0 | col > 7 | col < 0) {return false;}
+        if (Board[row][col] == null) {return false;}
+        if (Board[row][col].getTeamColor().equals(color)) {return false;}
+        return true;
+    }
+
+    public boolean availablePosition(ChessPosition position, ChessGame.TeamColor color){
+        int row = position.getRow() -1;
+        int col = position.getRow() -1;
+        if (row > 7 | row < 0 | col > 7 | col < 0) {return false;}
+        if (Board[row][col] == null) {return true;}
+        if (Board[row][col].getTeamColor().equals(color)) {return false;}
+        return true;
     }
 }
